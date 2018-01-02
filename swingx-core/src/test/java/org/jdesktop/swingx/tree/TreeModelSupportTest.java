@@ -73,13 +73,15 @@ public class TreeModelSupportTest extends TestCase {
      */
     @Test
     public void testPathChangedNotNullPathElements() {
-        TreePath path = new TreePath(new Object[] {null});
         try {
+            TreePath path = new TreePath(new Object[] {null});
             support.firePathChanged(path);
             fail("must not allow null path elements");
         } catch (NullPointerException e) {
             // expected
-        } 
+        } catch (IllegalArgumentException e) {
+            // expected
+        }
         // unexpected exception
     }
     
@@ -125,13 +127,15 @@ public class TreeModelSupportTest extends TestCase {
      */
     @Test
     public void testTreeStructureChangedNotNullPathElements() {
-        TreePath path = new TreePath(new Object[] {null});
         try {
+            TreePath path = new TreePath(new Object[] {null});
             support.fireTreeStructureChanged(path);
             fail("must not allow null path elements");
         } catch (NullPointerException e) {
             // expected
-        } 
+        } catch (IllegalArgumentException e) {
+            // expected
+        }
         // unexpected exception
     }
     
